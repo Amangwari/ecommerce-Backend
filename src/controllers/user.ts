@@ -20,4 +20,4 @@ export const newUser = async (
     } catch (error) {
 
     }
-}
+}   
