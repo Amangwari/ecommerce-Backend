@@ -18,6 +18,6 @@ export const newUser = async (
             message: `User created successfully ${user.name}`
         })
     } catch (error) {
-
+   
     }
 }   
