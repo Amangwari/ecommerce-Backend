@@ -7,7 +7,7 @@ export const newUser = async (
     req: Request,
     res: Response,
     next: NextFunction) => {
-
+  
     try {
         const { name, email, photo, gender, role, _id, dob } = req.body;
 
