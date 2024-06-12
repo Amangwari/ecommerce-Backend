@@ -6,6 +6,7 @@ import express from 'express';
 //  Importing routes
 import userRotes from './routes/user.js';
 import { connectDB } from './utils/features.js';
+import { ErrorMiddleware } from './middlewares/error.js';
 const port = 4000;
 connectDB();
 const app = express();
@@ -15,6 +16,8 @@ app.get("/", (req, res) => {
 });
 // using routes
 app.use("/api/v1", userRotes);
+//middleware for error handling  (next means jump to next middleware)
+app.use(ErrorMiddleware);
 app.listen(port, () => {
     console.log(`Server is working on http://localhost:${port}`);
 });
