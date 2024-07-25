@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
     res.send("API Working");
 });
 // using routes
-app.use("/api/v1", userRotes);
+app.use("/api/v1/user", userRotes);
 //middleware for error handling  (next means jump to next middleware)
 app.use(ErrorMiddleware);
 app.listen(port, () => {

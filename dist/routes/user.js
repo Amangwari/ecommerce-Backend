@@ -1,9 +1,13 @@
 import express from "express";
-import { newUser } from "../controllers/user.js";
+import { DeleteUser, getAllUser, getUser, newUser } from "../controllers/user.js";
 const app = express.Router();
 app.get("/", (req, res) => {
     res.send("API working ");
 });
 // route = /api/v1/user/new
-app.post("/user/new", newUser);
+app.post("/new", newUser);
+// Route - /api/v1/user/all
+app.get("/all", getAllUser);
+// Route - /api/v1/user/dynamicID
+app.route("/:id").get(getUser).delete(DeleteUser); // chaining coz routes are same
 export default app;

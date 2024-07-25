@@ -6,6 +6,6 @@ export const ErrorMiddleware = (err, req, res, nex) => {
         message: err.message
     });
 };
-export const TryCath = (func) => (req, res, next) => {
+export const TryCatch = (func) => (req, res, next) => {
     return Promise.resolve(func(req, res, next)).catch((next));
 };
