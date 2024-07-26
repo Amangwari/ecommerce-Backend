@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 })
 
 // using routes
-app.use("/api/v1", userRotes)
+app.use("/api/v1/user", userRotes)
 
 
 //middleware for error handling  (next means jump to next middleware)
