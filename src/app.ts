@@ -7,10 +7,14 @@ import express from 'express'
 // nodemon start => npm run dev
 
 
-//  Importing routes
-import userRotes from './routes/user.js'
 import { connectDB } from './utils/features.js';
 import { ErrorMiddleware } from './middlewares/error.js';
+
+
+//  Importing routes
+import userRotes from './routes/user.js'
+import productRoutes from './routes/product.js'
+
 
 const port = 4000;
 
@@ -26,6 +30,9 @@ app.get("/", (req, res) => {
 
 // using routes
 app.use("/api/v1/user", userRotes)
+
+// product routes
+app.use("/api/v1/product", productRoutes)
 
 
 //middleware for error handling  (next means jump to next middleware)
