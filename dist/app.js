@@ -19,6 +19,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/user", userRotes);
 // product routes
 app.use("/api/v1/product", productRoutes);
+app.use("/uploads", express.static("uploads"));
 //middleware for error handling  (next means jump to next middleware)
 app.use(ErrorMiddleware);
 app.listen(port, () => {
