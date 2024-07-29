@@ -26,7 +26,7 @@ export const newProduct = TryCatch(async (req: Request<{}, {}, NewProductRequest
         name, price, stock, category: category.toLowerCase(), photo: photo?.path,
     })
 
-    return res.status(201).json({
+    return res.status(200).json({
         success: true,
         message: "Product Created Successfully",
     })
@@ -36,7 +36,7 @@ export const newProduct = TryCatch(async (req: Request<{}, {}, NewProductRequest
 
 export const getlatestPorducts = TryCatch(async (req, res, next) => {
     const products = await Product.find({}).sort({ createdAt: -1 }).limit(5);
-    return res.status(201).json({
+    return res.status(200).json({
         success: true,
         products
     })
@@ -45,8 +45,19 @@ export const getlatestPorducts = TryCatch(async (req, res, next) => {
 export const getAllCategories = TryCatch(async (req, res, next) => {
     const categories = await Product.distinct("category");
 
-    return res.status(201).json({
+    return res.status(200).json({
         success: true,
         categories
     })
+});
+
+
+export const getAdminProducts = TryCatch(async (req, res, next) => {
+    const products = await Product.find({})
+
+    return res.status(200).json({
+        success: true,
+        products
+    })
 })
+
