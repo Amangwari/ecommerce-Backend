@@ -15,7 +15,7 @@ app.get("/latest", getlatestPorducts);
 app.get("/categories", getAllCategories);
 
 // to get all products - api/v1/product/admin-products
-app.get("/admin-poducts", getAdminProducts); 
+app.get("/admin-poducts", getAdminProducts);  
 
 
 export default app;
