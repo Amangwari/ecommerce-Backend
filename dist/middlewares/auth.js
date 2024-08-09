@@ -13,4 +13,4 @@ export const adminOnly = TryCatch(async (req, res, next) => {
         return next(new ErrorHandler("Your are not Admin", 401));
     next();
 });
-"api/v1/user/werwersdf?Key=23";
+// "api/v1/user/werwersdf?Key=23"

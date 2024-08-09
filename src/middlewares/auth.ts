@@ -18,4 +18,4 @@ export const adminOnly = TryCatch(async (req, res, next) => {
 });
 
 
-"api/v1/user/werwersdf?Key=23"
+// "api/v1/user/werwersdf?Key=23"

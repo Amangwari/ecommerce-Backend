@@ -1,6 +1,6 @@
 import { Request } from "express";
 import { TryCatch } from "../middlewares/error.js";
-import { NewProductRequestBody } from "../types/types.js";
+import { BaseQuery, NewProductRequestBody, SearchRequestQuery } from "../types/types.js";
 import { Product } from "../models/product.js";
 import ErrorHandler from "../utils/utility-class.js";
 import { rm } from "fs";
@@ -31,6 +31,42 @@ export const newProduct = TryCatch(async (req: Request<{}, {}, NewProductRequest
         message: "Product Created Successfully",
     })
 })
+
+// search product
+export const getAllProducts = TryCatch(async (req: Request<{}, {},SearchRequestQuery>, res, next) => {
+
+    const { search, sort, category, price } = req.query;
+    const page = Number(req.query.page) || 1;
+    const limit = Number(process.env.PODUCT_PER_PAGE) || 8;
+    const skip = (page - 1) * limit;
+
+    const baseQuery: BaseQuery = {};
+
+
+    if (search) {
+        baseQuery.name = {
+            $regex: String(search),
+            $options: 'i' // Case-insensitive
+        };
+    }
+
+    if (price) {
+        baseQuery.price = {
+            $lte: Number(price) 
+        };
+    }
+
+    if (category) {
+        baseQuery.category = String(category);
+    }
+
+    const products = await Product.find(baseQuery).skip(skip).limit(limit);
+    return res.status(200).json({
+        success: true,
+        products
+    })
+});
+
 
 
 
